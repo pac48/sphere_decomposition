@@ -1,7 +1,7 @@
 #include "sphere_decomposition.hpp"
 
-#include <iostream>
-
-void hello() {
-  std::cout << "Hello, World!" << std::endl;
+namespace sphere_decomposition {
+  std::vector<unsigned char> render(float fx, float fy, unsigned int res_x, unsigned int res_y) {
+    return {};
+  }
 }

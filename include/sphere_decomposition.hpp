@@ -1,6 +1,6 @@
-#ifndef SPHERE_DECOMPOSITION_SPHERE_DECOMPOSITION_HPP
-#define SPHERE_DECOMPOSITION_SPHERE_DECOMPOSITION_HPP
+#pragma once
+#include "vector"
 
-void hello();
-
-#endif //SPHERE_DECOMPOSITION_SPHERE_DECOMPOSITION_HPP
+namespace sphere_decomposition {
+  std::vector<unsigned char> render(float fx, float fy, unsigned int res_x, unsigned int res_y);
+}
