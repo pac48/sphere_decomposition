@@ -37,7 +37,7 @@ static void glfw_error_callback(int error, const char *description) {
 }
 
 struct RenderData {
-    GLFWwindow *window;
+    GLFWwindow *window{};
     ImGuiIO io;
 };
 
