@@ -7,7 +7,7 @@
 #include "gui.hpp"
 
 pybind11::array_t<uint8_t>
-render(float fx, float fy, unsigned int res_x, unsigned int res_y, const pybind11::array_t<double>& triangles) {
+render(float fx, float fy, unsigned int res_x, unsigned int res_y, const pybind11::array_t<float>& triangles) {
   CArray triangles_arr{triangles.data(), triangles.size()};
   auto img_vec = sphere_decomposition::render(fx, fy, res_x, res_y, triangles_arr);
   pybind11::array_t<uint8_t> img(img_vec.size(), img_vec.data());

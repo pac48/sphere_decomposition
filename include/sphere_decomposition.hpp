@@ -3,7 +3,7 @@
 #include "vector"
 
 struct CArray {
-  const double *data;
+  const float *data;
   long size;
 };
 namespace sphere_decomposition {

@@ -25,21 +25,29 @@ if __name__ == "__main__":
     faces = np.vstack(faces)
     verts = np.array(model.vertices)
     triangles = decompose_into_triangles(faces, verts)
+    triangles = triangles.reshape(-1, 9)
+    triangles = np.hstack([triangles, np.zeros((triangles.shape[0], 6))])
 
     controller = sphere_decomposition_py.ImguiController()
     # triangles[:, 2] += -1
 
+    fy = 1
+    fx = 1
+
     while True:
         start = time.time()
-        triangles[:, 0] += .05*np.sin(time.time())
-        triangles[:, 1] += .05*np.cos(time.time())
+        triangles[:, [0, 3, 6]] += .05 * np.sin(time.time())
+        triangles[:, [1, 4, 7]] += .05 * np.cos(time.time())
+
+        # x 2d
+        triangles[:, [9, 11, 13]] = fx * triangles[:, [0, 3, 6]] / triangles[:, [2, 5, 8]]
+        # y 2d
+        triangles[:, [10, 12, 14]] = fy * triangles[:, [1, 4, 7]] / triangles[:, [2, 5, 8]]
 
         res_y = controller.get_height()
         res_x = controller.get_width()
-        fy = 1
-        fx = 1
         img = sphere_decomposition_py.render(fx, fy, res_x, res_y, triangles)
         img = img[:, :, :3]
         controller.set_img(img[::-1, :, :].copy())
-        print(time.time()-start)
+        print(time.time() - start)
         # time.sleep(.01)
