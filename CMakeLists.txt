@@ -34,7 +34,7 @@ execute_process(
 add_library(sphere_decomposition SHARED src/sphere_decomposition.cu)
 target_include_directories(sphere_decomposition PUBLIC include)
 set_target_properties(sphere_decomposition PROPERTIES CUDA_RESOLVE_DEVICE_SYMBOLS ON CUDA_SEPARABLE_COMPILATION ON)
-#target_compile_options(sdf_renderer PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-g -G -lineinfo>)
+#target_compile_options(sphere_decomposition PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-g -G -lineinfo>)
 
 pybind11_add_module(sphere_decomposition_py src/pybind.cpp)
 target_link_libraries(sphere_decomposition_py PUBLIC sphere_decomposition)
